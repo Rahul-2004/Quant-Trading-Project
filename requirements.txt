@@ -1,0 +1,14 @@
+# Core Data Processing
+polars>=0.20.0
+numpy>=1.24.0
+
+# Machine Learning
+torch>=2.0.0
+
+# Visualization
+altair>=5.0.0
+matplotlib>=3.7.0
+
+# HTTP Requests & Data Fetching
+requests>=2.31.0
+tqdm>=4.65.0
