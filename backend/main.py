@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .routes import strategies, backtest, trade
+from .routes import backtest, findings, strategies, trade
 
 app = FastAPI()
 
@@ -16,6 +16,7 @@ app.add_middleware(
 app.include_router(strategies.router)
 app.include_router(backtest.router)
 app.include_router(trade.router)
+app.include_router(findings.router)
 
 @app.get("/")
 def read_root():

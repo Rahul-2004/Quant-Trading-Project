@@ -29,17 +29,28 @@ export const getTickers = async () => {
     }
 };
 
-export const runBacktest = async (strategyId, ticker, startDate, endDate) => {
+export const runBacktest = async (strategyId, ticker, startDate, endDate, yearOverrides = []) => {
     try {
         const response = await api.post('/backtest', {
             strategy_id: strategyId,
             ticker: ticker,
             start_date: startDate,
             end_date: endDate,
+            year_overrides: yearOverrides,
         });
         return response.data;
     } catch (error) {
         console.error('Error running backtest:', error);
+        throw error;
+    }
+};
+
+export const getFindings = async () => {
+    try {
+        const response = await api.get("/findings");
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching findings:", error);
         throw error;
     }
 };

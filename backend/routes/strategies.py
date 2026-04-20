@@ -1,16 +1,14 @@
 from fastapi import APIRouter
-from typing import List, Dict
-from ..strategies import STRATEGIES
+from typing import List, Dict, Any
+
+from ..strategies import get_ranked_strategy_items
 
 router = APIRouter(prefix="/api", tags=["strategies"])
 
 @router.get("/strategies")
-def get_strategies() -> List[Dict[str, str]]:
+def get_strategies() -> List[Dict[str, Any]]:
     """List available trading strategies."""
-    return [
-        {"id": key, "name": strategy.name} 
-        for key, strategy in STRATEGIES.items()
-    ]
+    return get_ranked_strategy_items()
 
 @router.get("/tickers")
 def get_tickers() -> List[str]:
